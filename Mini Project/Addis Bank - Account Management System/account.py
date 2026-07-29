@@ -133,6 +133,10 @@ class SavingsAccount(Account):
         # wanted to make sure that the rate argument is in the float format
         self.__rate=float(rate)
 
+    @property
+    def rate(self):
+        return self.__rate
+    
     def  add_interest(self):
         interest=self.__balance * self.__rate /100
         # Reusing deposit 
@@ -149,11 +153,48 @@ class SavingsAccount(Account):
         Account Number: {self.number}
         # thousand separation ,
         Balance:        {self.balance:,} ETB
+        Rate:           {self.rate:}%
         # to format it to a year month and date 
         Created Date:   {self.created_date:%Y-%m-%d}
         --------------------------------
         """)
 
+#Current Account
+
+class CurrentAccount(Account):
+    def __init__(self,name,number,balance,overdraft):
+        super().__init__(name,number,balance)
+        self.__overdraft=int(overdraft)
+
+    @property
+    def overdraft(self):
+        return self.__overdraft
+    
+    # overriding withdraw
+    def withdraw(self, amount):
+        # one point from withdraw
+        if amount <=0:
+            raise ValueError("Withdraw amount has to be grater than zero")
+        if amount > self.__balance+self.__overdraft:
+            raise ValueError("Overdraft limit exceeded.")
+          
+    # overriding statement 
+    def statement(self):
+        return (f"""
+                --------------------------------
+                        ACCOUNT STATEMENT
+                --------------------------------
+                Account type:   Current Account
+                Name:           {self.name}
+                Account Number: {self.number}
+                # thousand separation ,
+                Balance:        {self.balance:,} ETB
+                # Overdraft amount
+                Overdraft Amount:{self.__overdraft:,} ETB 
+                # to format it to a year month and date 
+                Created Date:   {self.created_date:%Y-%m-%d}
+                --------------------------------
+                """)
 
 
 
