@@ -1,32 +1,32 @@
-# # Level 3:Advanced
+# Level 3:Advanced
 
-# # 8, File Reading & Writing
+# 8, File Reading & Writing
 
-# try:
-#     total=0
-#     with open("students.txt","r") as f:
-#         for line in f:
-#             name,score=line.strip().split(",")
-#             total +=int(score)
-#         average_score=total/5
-#         print(f"The average score of the students is {average_score}")
-# except FileNotFoundError:
-#     print("No Student File found.")
+try:
+    total=0
+    with open("students.txt","r") as f:
+        for line in f:
+            name,score=line.strip().split(",")
+            total +=int(score)
+        average_score=total/5
+        print(f"The average score of the students is {average_score}")
+except FileNotFoundError:
+    print("No Student File found.")
 
-# # 9, Error Handling 
+# 9, Error Handling 
 
-# try:
-#     num1=int(input("Enter the first number: "))
-#     num2=int(input("Enter the second number: "))
-#     result=num1/num2
-# except ValueError:
-#     print("The number/s that you have entered are non-numeric.")
-# except ZeroDivisionError:
-#     print("The second number can't be zero.")
-# else:
-#     print(f"The division of {num1} by {num2} is {result}.")
-# finally:
-#     print("Calculation attempt completed.")
+try:
+    num1=int(input("Enter the first number: "))
+    num2=int(input("Enter the second number: "))
+    result=num1/num2
+except ValueError:
+    print("The number/s that you have entered are non-numeric.")
+except ZeroDivisionError:
+    print("The second number can't be zero.")
+else:
+    print(f"The division of {num1} by {num2} is {result}.")
+finally:
+    print("Calculation attempt completed.")
 
 # 10, Full Program - Inventory Manager
 
