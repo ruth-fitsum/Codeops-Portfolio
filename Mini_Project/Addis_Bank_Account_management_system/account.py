@@ -1,6 +1,8 @@
 from datetime import datetime
+from abc import ABC,abstractmethod
 
-class Account:
+# based on Day 5 let's make it Abstract class 
+class Account(ABC):
     #created_date is not passed by user but automatically generated 
     def __init__(self,name,number,balance):
         #after some taught the other attributes also need to be private cause they are facts 
@@ -43,6 +45,11 @@ class Account:
         if self.__balance < amount:
             raise ValueError("Insufficient balance")
         self.__balance -= amount
+
+    #based on day05_exercises 
+    @abstractmethod
+    def calculate_interest(self):
+        pass
 
     def statement(self):
      # return not print because it will be useful on __str__()
@@ -136,9 +143,12 @@ class SavingsAccount(Account):
     @property
     def rate(self):
         return self.__rate
-    
-    def  add_interest(self):
+
+    def calculate_interest(self):
         interest=self.__balance * self.__rate /100
+        return interest    
+    def  add_interest(self):
+        interest=self.calculate_interest()
         # Reusing deposit 
         self.deposit(interest)
 
@@ -158,6 +168,32 @@ class SavingsAccount(Account):
         Created Date:   {self.created_date:%Y-%m-%d}
         --------------------------------
         """)
+# second level of inheritance - Fixed Deposit account
+
+class FixedDepositAccount(SavingsAccount):
+    def __init__(self,name,number,balance,rate,term):
+        super().__init__(name,number,balance,rate)
+        self.__term=term
+
+    @property 
+    def term(self):
+        return self.__term
+
+    def statement (self):
+        return f"""
+--------------------------------
+        ACCOUNT STATEMENT
+--------------------------------
+Account type:   Fixed Deposit Account
+Name:           {self.name}
+Account Number: {self.number}
+Balance:        {self.balance:,} ETB
+Rate:           {self.rate}%
+Term:           {self.term} months
+Created Date:   {self.created_date:%Y-%m-%d}
+--------------------------------
+"""
+
 
 #Current Account
 
@@ -169,6 +205,10 @@ class CurrentAccount(Account):
     @property
     def overdraft(self):
         return self.__overdraft
+
+    # from Day 5 
+    def calculate_interest(self):
+        return 0
     
     # overriding withdraw
     def withdraw(self, amount):
@@ -197,8 +237,13 @@ class CurrentAccount(Account):
                 """)
 
 
+# trial for polymorphism 
 
-
+savings1 = SavingsAccount("Abebe", 1002, 10000, 5)
+current1 = CurrentAccount("Mekdes", 1003, 15000, 5000)
+accounts=[savings1,current1]
+for account in accounts:
+    print(account.statement())
 
 
         
