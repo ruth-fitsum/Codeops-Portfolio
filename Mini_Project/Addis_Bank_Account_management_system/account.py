@@ -11,7 +11,8 @@ class Account(ABC):
         # balance has to be private
         self.__balance=int(balance)
         self.__created_date=datetime.now()
-
+        # adding an observer list
+        self._observers=[]
     #gettter for name
     @property
     def name(self):
@@ -32,12 +33,15 @@ class Account(ABC):
     def created_date(self):
         return self.__created_date
 
+    @property 
+    def subscribers(self):
+        return self._subscribers
+    
     def deposit(self,amount):
         if amount <=0:
             raise ValueError("Amount has be greater than zero.")
         self.__balance+=amount
-        print("\nDeposit successful.")
-        print(f"New balance: {self.__balance:,} ETB")
+        self._notify(f"{amount} ETB")
 
     def withdraw(self,amount):
         if amount <= 0:
@@ -45,7 +49,7 @@ class Account(ABC):
         if self.__balance < amount:
             raise ValueError("Insufficient balance")
         self.__balance -= amount
-
+        self._notify(f"-{amount} ETB")
     #based on day05_exercises 
     @abstractmethod
     def calculate_interest(self):
@@ -67,8 +71,16 @@ Created Date:   {self.created_date:%Y-%m-%d}
 """)
     def __str__(self):
         return self.statement()
+
+    def subscribe(self, subscriber):
+        self._observers.append(subscriber)
+
+    def _notify(self,event):
+        for obs in self._observers:
+            obs.update(event)    
 #Store all accounts in a dictionary
 accounts={} # account_number → account object
+
 running =True
 while running:
     print("""
@@ -246,4 +258,43 @@ for account in accounts:
     print(account.statement())
 
 
-        
+# BankConfig Singleton Creation 
+
+class BankConfig :
+    _instance=None
+    # cls is for the class as self is for object 
+    # super- cause there is upper built in class called object where every class that we create is a subclass of it 
+    # and when ever we create an object for a specific class __new__ is called 
+    # which is created by the parent class object and this has to know for which type of class we are creating an object for so we feed cls 
+     
+    def __new__(cls):
+        if cls._instance is None:
+           cls._instance=super().__new__(cls)
+           # instance is the instance hahaha
+           # and know we are giving some attributes for the instance 
+           cls._instance.interest_rate =0.05
+           cls._instance.overdraft_limit=1000
+        return cls._instance # with everything we are setting it on
+
+# Factory 
+class AccountFctory:
+    # since we don't need an instance for this particular class for the create method to function 
+    @staticmethod
+    def create(kind,name,number,balance=0):
+        if kind=="savings":
+            return SavingsAccount(name,number,balance)
+        elif kind=="current":
+            return CurrentAccount(name,number,balance)
+        else:
+            raise ValueError("No such account type is available")
+
+# Observer
+
+class SMSAlert:
+    def update(self,message):
+        print(f"SMS: {message}")
+
+class AuditLog:
+    def update(self,message):
+            print(f"Audit: {message}")
+    
