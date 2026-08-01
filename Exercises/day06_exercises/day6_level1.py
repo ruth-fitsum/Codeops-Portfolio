@@ -119,6 +119,7 @@ make_bird_fly(penguin1)
 
 class Account:
     def __init__(self):
+        # This line here also violates the last violation of SOLID principles 
         self.notifier=EmailNotifier()
         ...
     def withdraw(self,amount):
@@ -126,5 +127,6 @@ class Account:
         self.notifier.send_email(...)
         self.save_to_do(...)
 
-# This code violates - SIP - single responsibility principle
+# This code violates - SIP - single responsibility principle and DIP -dependency inversion principle
+
 
