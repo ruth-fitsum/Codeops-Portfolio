@@ -35,7 +35,7 @@ class Account(ABC):
 
     @property 
     def subscribers(self):
-        return self._subscribers
+        return self._observers
     
     def deposit(self,amount):
         if amount <=0:
@@ -147,17 +147,17 @@ except KeyError:
 
 # SavingsAccount
 class SavingsAccount(Account):
-    def __init__(self,name,number,balance,rate=0.05):
+    def __init__(self,name,number,balance):
         super().__init__(name,number,balance)
         # wanted to make sure that the rate argument is in the float format
-        self.__rate=float(rate)
+        self.__rate=BankConfig().interest_rate
 
     @property
     def rate(self):
         return self.__rate
 
     def calculate_interest(self):
-        interest=self.__balance * self.__rate /100
+        interest=self.balance * self.__rate /100
         return interest    
     def  add_interest(self):
         interest=self.calculate_interest()
@@ -210,9 +210,9 @@ Created Date:   {self.created_date:%Y-%m-%d}
 #Current Account
 
 class CurrentAccount(Account):
-    def __init__(self,name,number,balance,overdraft):
+    def __init__(self,name,number,balance):
         super().__init__(name,number,balance)
-        self.__overdraft=int(overdraft)
+        self.__overdraft=BankConfig().overdraft_limit
 
     @property
     def overdraft(self):
@@ -229,6 +229,8 @@ class CurrentAccount(Account):
             raise ValueError("Withdraw amount has to be grater than zero")
         if amount > self.__balance+self.__overdraft:
             raise ValueError("Overdraft limit exceeded.")
+        self._balance -= amount
+        self._notify(f"{amount} ETB")
           
     # overriding statement 
     def statement(self):
@@ -251,8 +253,8 @@ class CurrentAccount(Account):
 
 # trial for polymorphism 
 
-savings1 = SavingsAccount("Abebe", 1002, 10000, 5)
-current1 = CurrentAccount("Mekdes", 1003, 15000, 5000)
+savings1 = SavingsAccount("Abebe", 1002, 10000)
+current1 = CurrentAccount("Mekdes", 1003, 15000)
 accounts=[savings1,current1]
 for account in accounts:
     print(account.statement())
@@ -277,13 +279,14 @@ class BankConfig :
         return cls._instance # with everything we are setting it on
 
 # Factory 
-class AccountFctory:
-    # since we don't need an instance for this particular class for the create method to function 
+class AccountFactory:
+    # since we don't need an instance for this particular class for the create method to function - AccountFactory.create
     @staticmethod
     def create(kind,name,number,balance=0):
         if kind=="savings":
             return SavingsAccount(name,number,balance)
         elif kind=="current":
+            #less argument because of the Bankconfig
             return CurrentAccount(name,number,balance)
         else:
             raise ValueError("No such account type is available")
