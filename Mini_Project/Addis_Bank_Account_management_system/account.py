@@ -77,71 +77,30 @@ Created Date:   {self.created_date:%Y-%m-%d}
 
     def _notify(self,event):
         for obs in self._observers:
-            obs.update(event)    
-#Store all accounts in a dictionary
-accounts={} # account_number → account object
+            obs.update(event)  
 
-running =True
-while running:
-    print("""
-========== ADDIS BANK ==========
 
-1.Create new account
-2.Deposit
-3.Withdraw
-4.Check balance
-5.View account info
-6.Exit
-=================================
-""")
-    
-    choice=input("Enter your choice: ")
-try :
-    if choice =="1":
-        name=input("Enter customer's name: ")
-        initial_balance=int(input("Enter inital balance: "))
-        account_number=int(input("Enter the account number: "))
-        if account_number in accounts:
-            print("Account number already exists.")
-        else:
-            account=Account(name,account_number,initial_balance)
-            accounts[account_number]=account
-            print("Account created successfully.")
+# BankConfig Singleton Creation 
 
-    elif choice=="2":
-        account_number=int(input("Enter account number: "))
-        amount=int(input("Enter deposit amount: "))
-        account=accounts[account_number]
-        account.deposit(amount)
+class BankConfig :
+    _instance=None
+    # cls is for the class as self is for object 
+    # super- cause there is upper built in class called object where every class that we create is a subclass of it 
+    # and when ever we create an object for a specific class __new__ is called 
+    # which is created by the parent class object and this has to know for which type of class we are creating an object for so we feed cls 
+     
+    def __new__(cls):
+        if cls._instance is None:
+           cls._instance=super().__new__(cls)
+           # instance is the instance hahaha
+           # and know we are giving some attributes for the instance 
+           cls._instance.interest_rate =0.05
+           cls._instance.overdraft_limit=1000
+        return cls._instance # with everything we are setting it on
 
-    elif choice =="3":
-        account_number=int(input("Enter account number: "))
-        amount=int(input("Enter withdrawal amount: "))
-        account=accounts[account_number]
-        account.withdraw(amount)
 
-    elif choice =="4":
-        account_number=int(input("Enter account number: "))
-        account=accounts[account_number]
-        print(f"{account.balance} ETB")
 
-    elif choice=="5":
-        account_number=int(input("Enter account number: "))
-        account=accounts[account_number]
-        # I prefer __str__()
-        print(account)
 
-    elif choice=="6":
-        print("Thank you for using Addis Bank.")
-        running=False
-    else:
-        print("Please select only from 1-6.")
-# for every user entry
-except ValueError as error:
-    print(f"Error: {error}")
-# when the user wants to change or update an account that doesn't exist
-except KeyError:
-    print("Account not found.")
 
 # Day 5
 
@@ -260,23 +219,7 @@ for account in accounts:
     print(account.statement())
 
 
-# BankConfig Singleton Creation 
 
-class BankConfig :
-    _instance=None
-    # cls is for the class as self is for object 
-    # super- cause there is upper built in class called object where every class that we create is a subclass of it 
-    # and when ever we create an object for a specific class __new__ is called 
-    # which is created by the parent class object and this has to know for which type of class we are creating an object for so we feed cls 
-     
-    def __new__(cls):
-        if cls._instance is None:
-           cls._instance=super().__new__(cls)
-           # instance is the instance hahaha
-           # and know we are giving some attributes for the instance 
-           cls._instance.interest_rate =0.05
-           cls._instance.overdraft_limit=1000
-        return cls._instance # with everything we are setting it on
 
 # Factory 
 class AccountFactory:
@@ -301,3 +244,67 @@ class AuditLog:
     def update(self,message):
             print(f"Audit: {message}")
     
+#Store all accounts in a dictionary
+accounts={} # account_number → account object
+
+running =True
+while running:
+    print("""
+========== ADDIS BANK ==========
+
+1.Create new account
+2.Deposit
+3.Withdraw
+4.Check balance
+5.View account info
+6.Exit
+=================================
+""")
+    
+    choice=input("Enter your choice: ")
+try :
+    if choice =="1":
+        name=input("Enter customer's name: ")
+        initial_balance=int(input("Enter inital balance: "))
+        account_number=int(input("Enter the account number: "))
+        if account_number in accounts:
+            print("Account number already exists.")
+        else:
+            account=Account(name,account_number,initial_balance)
+            accounts[account_number]=account
+            print("Account created successfully.")
+
+    elif choice=="2":
+        account_number=int(input("Enter account number: "))
+        amount=int(input("Enter deposit amount: "))
+        account=accounts[account_number]
+        account.deposit(amount)
+
+    elif choice =="3":
+        account_number=int(input("Enter account number: "))
+        amount=int(input("Enter withdrawal amount: "))
+        account=accounts[account_number]
+        account.withdraw(amount)
+
+    elif choice =="4":
+        account_number=int(input("Enter account number: "))
+        account=accounts[account_number]
+        print(f"{account.balance} ETB")
+
+    elif choice=="5":
+        account_number=int(input("Enter account number: "))
+        account=accounts[account_number]
+        # I prefer __str__()
+        print(account)
+
+    elif choice=="6":
+        print("Thank you for using Addis Bank.")
+        running=False
+    else:
+        print("Please select only from 1-6.")
+# for every user entry
+except ValueError as error:
+    print(f"Error: {error}")
+# when the user wants to change or update an account that doesn't exist
+except KeyError:
+    print("Account not found.")
