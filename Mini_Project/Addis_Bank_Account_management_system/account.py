@@ -51,9 +51,9 @@ class Account(ABC):
         self.__balance -= amount
         self._notify(f"-{amount} ETB")
     #based on day05_exercises 
-    @abstractmethod
-    def calculate_interest(self):
-        pass
+    # @abstractmethod
+    # def calculate_interest(self):
+    #     pass - commented based on Day 6 
 
     def statement(self):
      # return not print because it will be useful on __str__()
@@ -99,7 +99,11 @@ class BankConfig :
         return cls._instance # with everything we are setting it on
 
 
-
+class InterestCalculator:
+    # abstractmethod 
+    @abstractmethod 
+    def calculate(self):
+        pass
 
 
 # Day 5
