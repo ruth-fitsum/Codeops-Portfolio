@@ -13,6 +13,7 @@ class Account(ABC):
         self.__created_date=datetime.now()
         # adding an observer list
         self._observers=[]
+        self.__history=[]
     #gettter for name
     @property
     def name(self):
@@ -42,6 +43,7 @@ class Account(ABC):
             raise ValueError("Amount has be greater than zero.")
         self.__balance+=amount
         self._notify(f"{amount} ETB")
+        self.__history.append(("deposit", amount))
 
     def withdraw(self,amount):
         if amount <= 0:
@@ -50,6 +52,7 @@ class Account(ABC):
             raise ValueError("Insufficient balance")
         self.__balance -= amount
         self._notify(f"-{amount} ETB")
+        self.__history.append(("withdraw", amount))
     #based on day05_exercises 
     # @abstractmethod
     # def calculate_interest(self):
@@ -79,7 +82,14 @@ Created Date:   {self.created_date:%Y-%m-%d}
         for obs in self._observers:
             obs.update(event)  
 
+    def undo_last(self):
+        transaction=self.__history.pop()
+        transaction_type,amount=transaction
 
+        if transaction_type=="deposit":
+            self.__balance -=amount
+        elif transaction_type=="withdraw":
+            self.__balance +=amount
 # BankConfig Singleton Creation 
 
 class BankConfig :
@@ -99,17 +109,17 @@ class BankConfig :
         return cls._instance # with everything we are setting it on
 
 
-class InterestCalculator:
+class InterestBearing:
     # abstractmethod 
     @abstractmethod 
-    def calculate(self):
+    def calculate_interest(self):
         pass
 
 
 # Day 5
 
 # SavingsAccount
-class SavingsAccount(Account):
+class SavingsAccount(Account,InterestBearing):
     def __init__(self,name,number,balance):
         super().__init__(name,number,balance)
         # wanted to make sure that the rate argument is in the float format
@@ -312,3 +322,17 @@ except ValueError as error:
 # when the user wants to change or update an account that doesn't exist
 except KeyError:
     print("Account not found.")
+
+# Day 7
+
+class AccountRegistry:
+    def __init__(self):
+        self.by_number={} # for fast look up 
+        self.order=[] # for ordering 
+    def add(self,acc):
+        self.by_number[acc.number]=acc
+        self.order.append(acc.number)
+    def find(self,number):
+        return self.by_number.get(number)
+    def list_all(self):
+        return self.order 
