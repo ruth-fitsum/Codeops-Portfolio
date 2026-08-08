@@ -1,7 +1,0 @@
-Paracetamol,25
-Amoxicillin,8
-Ibuprofen,15
-Insulin,5
-VitaminC,30
-Aspirin,7
-CoughSyrup,12
