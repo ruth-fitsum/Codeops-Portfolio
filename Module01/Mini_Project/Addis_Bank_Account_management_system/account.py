@@ -341,5 +341,45 @@ class AccountRegistry:
         return self.by_number.get(number)
     def list_all(self):
         return self.order 
+    # Day 8
+    def top_by_balance(self, n=5):
+        accts = sorted(self.by_number.values(),key=lambda a: a.balance,reverse=True)
+        return accts[:n]
+    def find_by_number(self, number):
+        nums = sorted(self.by_number)
+        i = binary_search(nums, number)
+        return self.by_number[nums[i]] if i >= 0 else None
+    def total_transactions(self, number):
+        account = self.find(number)
 
-# Day 7
+        if account is None:
+            return 0
+
+        history = account.get_history()
+
+        def sum_history(index):
+            if index == len(history):
+                return 0
+
+            return history[index][1] + sum_history(index + 1)
+
+        return sum_history(0)
+
+# Day 8 - binary search
+def binary_search(items, target):
+    left = 0
+    right = len(items) - 1
+
+    while left <= right:
+        middle = (left + right) // 2
+
+        if items[middle] == target:
+            return middle
+
+        elif items[middle] < target:
+            left = middle + 1
+
+        else:
+            right = middle - 1
+
+    return -1
