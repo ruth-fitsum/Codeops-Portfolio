@@ -13,6 +13,7 @@ class Account(ABC):
         self.__created_date=datetime.now()
         # adding an observer list
         self._observers=[]
+        # Day 7 history will have all the transaction
         self.__history=[]
     #gettter for name
     @property
@@ -43,6 +44,7 @@ class Account(ABC):
             raise ValueError("Amount has be greater than zero.")
         self.__balance+=amount
         self._notify(f"{amount} ETB")
+        # Day 7 push to transaction
         self.__history.append(("deposit", amount))
 
     def withdraw(self,amount):
@@ -52,6 +54,7 @@ class Account(ABC):
             raise ValueError("Insufficient balance")
         self.__balance -= amount
         self._notify(f"-{amount} ETB")
+        # Day 7 push to transaction
         self.__history.append(("withdraw", amount))
     #based on day05_exercises 
     # @abstractmethod
@@ -81,7 +84,7 @@ Created Date:   {self.created_date:%Y-%m-%d}
     def _notify(self,event):
         for obs in self._observers:
             obs.update(event)  
-
+    # Day 7 undo last transcation
     def undo_last(self):
         transaction=self.__history.pop()
         transaction_type,amount=transaction
@@ -281,6 +284,7 @@ try :
         name=input("Enter customer's name: ")
         initial_balance=int(input("Enter inital balance: "))
         account_number=int(input("Enter the account number: "))
+        # Day 7 search an account is there or not 
         if account_number in accounts:
             print("Account number already exists.")
         else:
@@ -301,6 +305,7 @@ try :
         account.withdraw(amount)
 
     elif choice =="4":
+        # Day 7 search by account number 
         account_number=int(input("Enter account number: "))
         account=accounts[account_number]
         print(f"{account.balance} ETB")
@@ -336,3 +341,5 @@ class AccountRegistry:
         return self.by_number.get(number)
     def list_all(self):
         return self.order 
+
+# Day 7
