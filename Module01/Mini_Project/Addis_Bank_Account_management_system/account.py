@@ -45,7 +45,8 @@ class Account(ABC):
         self.__balance+=amount
         self._notify(f"{amount} ETB")
         # Day 7 push to transaction
-        self.__history.append(("deposit", amount))
+        # Day 8 add time 
+        self.__history.append(("deposit", amount,datetime.now()))
 
     def withdraw(self,amount):
         if amount <= 0:
@@ -55,7 +56,8 @@ class Account(ABC):
         self.__balance -= amount
         self._notify(f"-{amount} ETB")
         # Day 7 push to transaction
-        self.__history.append(("withdraw", amount))
+        # Day 8 add time 
+        self.__history.append(("withdraw", amount,datetime.now()))
     #based on day05_exercises 
     # @abstractmethod
     # def calculate_interest(self):
@@ -347,7 +349,7 @@ class AccountRegistry:
         return accts[:n]
     def find_by_number(self, number):
         nums = sorted(self.by_number)
-        i = binary_search(nums, number)
+        i = binary_search_transactions(nums, number)
         return self.by_number[nums[i]] if i >= 0 else None
     def total_transactions(self, number):
         account = self.find(number)
@@ -364,22 +366,30 @@ class AccountRegistry:
             return history[index][1] + sum_history(index + 1)
 
         return sum_history(0)
+    # Day 8 - need to have sorted history 
+    def sort_transactions_by_date(self, number):
+        account = self.find(number)
+
+        if account is None:
+            return []
+
+        return sorted(account.get_history(),key=lambda transaction: transaction[2])
 
 # Day 8 - binary search
-def binary_search(items, target):
+def binary_search_transactions(self, number, target_date):
+    account = self.find(number)
+    if account is None:
+        return None
+    transactions = sorted(account.get_history(),key=lambda transaction: transaction[2])
     left = 0
-    right = len(items) - 1
-
+    right = len(transactions) - 1
     while left <= right:
         middle = (left + right) // 2
-
-        if items[middle] == target:
-            return middle
-
-        elif items[middle] < target:
+        transaction_date = transactions[middle][2]
+        if transaction_date == target_date:
+            return transactions[middle]
+        elif transaction_date < target_date:
             left = middle + 1
-
         else:
             right = middle - 1
-
-    return -1
+    return None
