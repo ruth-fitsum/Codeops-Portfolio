@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="description"
+        content="Bole Weather - Live weather information for Ethiopian cities"
+    >
+    <title>Bole Weather - Ethiopian Cities</title>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <h1>Bole Weather</h1>
+            <p>Ethiopian Cities</p>
+        </div>
+
+        <form>
+            <label for="city-search">Search city</label>
+            <input
+                type="search"
+                id="city-search"
+                name="city"
+                placeholder="Search city..."
+            >
+            <button type="submit">Search</button>
+        </form>
+
+        <div>
+            <button type="button">Theme</button>
+            <button type="button">Menu</button>
+        </div>
+    </header>
+
+    <div>
+
+        <aside>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#favorites">Favorites</a></li>
+                    <li><a href="#map">Map View</a></li>
+                    <li><a href="#alerts">Alerts</a></li>
+                    <li><a href="#weekly-report">Weekly Report</a></li>
+                    <li><a href="#cities">Major Cities</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                </ul>
+            </nav>
+
+            <section>
+                <p>Auto Location</p>
+                <strong>Addis Ababa</strong>
+                <button type="button">Location Settings</button>
+            </section>
+        </aside>
+
+        <main id="home">
+
+            <section>
+                <header>
+                    <div>
+                        <h2>Addis Ababa</h2>
+                        <p>Ethiopia</p>
+                        <time datetime="2025-08-19T10:30">
+                            Tuesday, 19 Aug 2025 · 10:30 AM
+                        </time>
+                    </div>
+
+                    <span>Live</span>
+                </header>
+
+                <div>
+                    <div>
+                        <div>
+                            <strong>22°C</strong>
+                            <p>Partly Cloudy</p>
+                            <p>Feels like 23°C</p>
+                        </div>
+
+                        <dl>
+                            <div>
+                                <dt>Humidity</dt>
+                                <dd>55%</dd>
+                            </div>
+
+                            <div>
+                                <dt>Wind</dt>
+                                <dd>12 km/h NE</dd>
+                            </div>
+
+                            <div>
+                                <dt>Pressure</dt>
+                                <dd>1016 hPa</dd>
+                            </div>
+
+                            <div>
+                                <dt>Visibility</dt>
+                                <dd>10 km</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+
+                <div>
+                    <article>
+                        <h3>Min / Max</h3>
+                        <p>18°C / 26°C</p>
+                    </article>
+
+                    <article>
+                        <h3>Chance of Rain</h3>
+                        <p>20%</p>
+                    </article>
+
+                    <article>
+                        <h3>Sunrise</h3>
+                        <p>6:10 AM</p>
+                    </article>
+
+                    <article>
+                        <h3>Sunset</h3>
+                        <p>6:35 PM</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="alerts">
+                <header>
+                    <h2>Alerts</h2>
+                    <a href="#alerts">View all</a>
+                </header>
+
+                <p>
+                    Heavy rainfall expected in Oromia and SNNPR regions
+                    from Aug 20–22.
+                </p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Hourly Forecast</h2>
+
+                    <div>
+                        <button type="button" aria-label="Previous hours">
+                            Previous
+                        </button>
+                        <button type="button" aria-label="Next hours">
+                            Next
+                        </button>
+                    </div>
+                </header>
+
+                <div>
+                    <article>
+                        <time>10 AM</time>
+                        <strong>22°C</strong>
+                        <small>0% rain</small>
+                    </article>
+
+                    <article>
+                        <time>11 AM</time>
+                        <strong>23°C</strong>
+                        <small>0% rain</small>
+                    </article>
+
+                    <article>
+                        <time>12 PM</time>
+                        <strong>24°C</strong>
+                        <small>10% rain</small>
+                    </article>
+
+                    <article>
+                        <time>1 PM</time>
+                        <strong>25°C</strong>
+                        <small>10% rain</small>
+                    </article>
+
+                    <article>
+                        <time>2 PM</time>
+                        <strong>25°C</strong>
+                        <small>10% rain</small>
+                    </article>
+
+                    <article>
+                        <time>3 PM</time>
+                        <strong>24°C</strong>
+                        <small>10% rain</small>
+                    </article>
+
+                    <article>
+                        <time>4 PM</time>
+                        <strong>23°C</strong>
+                        <small>0% rain</small>
+                    </article>
+
+                    <article>
+                        <time>5 PM</time>
+                        <strong>22°C</strong>
+                        <small>0% rain</small>
+                    </article>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>7-Day Forecast</h2>
+                </header>
+
+                <div>
+                    <article>
+                        <time datetime="2025-08-19">Tue 19 Aug</time>
+                        <p>Partly Cloudy</p>
+                        <strong>18°C / 26°C</strong>
+                    </article>
+
+                    <article>
+                        <time datetime="2025-08-20">Wed 20 Aug</time>
+                        <p>Cloudy</p>
+                        <strong>17°C / 25°C</strong>
+                    </article>
+
+                    <article>
+                        <time datetime="2025-08-21">Thu 21 Aug</time>
+                        <p>Light Rain</p>
+                        <strong>16°C / 23°C</strong>
+                    </article>
+
+                    <article>
+                        <time datetime="2025-08-22">Fri 22 Aug</time>
+                        <p>Thunderstorms</p>
+                        <strong>16°C / 22°C</strong>
+                    </article>
+
+                    <article>
+                        <time datetime="2025-08-23">Sat 23 Aug</time>
+                        <p>Partly Cloudy</p>
+                        <strong>17°C / 24°C</strong>
+                    </article>
+
+                    <article>
+                        <time datetime="2025-08-24">Sun 24 Aug</time>
+                        <p>Partly Cloudy</p>
+                        <strong>17°C / 24°C</strong>
+                    </article>
+
+                    <article>
+                        <time datetime="2025-08-25">Mon 25 Aug</time>
+                        <p>Sunny</p>
+                        <strong>18°C / 26°C</strong>
+                    </article>
+                </div>
+            </section>
+
+            <section id="cities">
+                <header>
+                    <h2>Major Cities</h2>
+                    <a href="#cities">View all cities</a>
+                </header>
+
+                <div>
+                    <article>
+                        <h3>Addis Ababa</h3>
+                        <strong>22°C</strong>
+                    </article>
+
+                    <article>
+                        <h3>Dire Dawa</h3>
+                        <strong>28°C</strong>
+                    </article>
+
+                    <article>
+                        <h3>Bahir Dar</h3>
+                        <strong>25°C</strong>
+                    </article>
+
+                    <article>
+                        <h3>Mekelle</h3>
+                        <strong>21°C</strong>
+                    </article>
+
+                    <article>
+                        <h3>Hawassa</h3>
+                        <strong>24°C</strong>
+                    </article>
+
+                    <article>
+                        <h3>Gondar</h3>
+                        <strong>23°C</strong>
+                    </article>
+                </div>
+            </section>
+
+            <section id="weekly-report">
+                <header>
+                    <h2>Weekly Report</h2>
+                    <a href="#weekly-report">View full weekly report</a>
+                </header>
+
+                <div>
+                    <article>
+                        <h3>Average Temperature</h3>
+                        <p>20–24°C</p>
+                    </article>
+
+                    <article>
+                        <h3>Total Rainfall</h3>
+                        <p>35 mm</p>
+                    </article>
+
+                    <article>
+                        <h3>Rainy Days</h3>
+                        <p>3 Days</p>
+                    </article>
+
+                    <article>
+                        <h3>Sunshine Hours</h3>
+                        <p>42 Hours</p>
+                    </article>
+                </div>
+            </section>
+
+        </main>
+
+        <aside>
+
+            <section id="favorites">
+                <header>
+                    <h2>Favorites</h2>
+                    <button type="button">Edit</button>
+                </header>
+
+                <ul>
+                    <li>
+                        <div>
+                            <strong>Addis Ababa</strong>
+                            <span>22°C</span>
+                        </div>
+                        <button type="button">
+                            Remove
+                        </button>
+                    </li>
+
+                    <li>
+                        <div>
+                            <strong>Bahir Dar</strong>
+                            <span>25°C</span>
+                        </div>
+                        <button type="button">
+                            Remove
+                        </button>
+                    </li>
+
+                    <li>
+                        <div>
+                            <strong>Mekelle</strong>
+                            <span>21°C</span>
+                        </div>
+                        <button type="button">
+                            Remove
+                        </button>
+                    </li>
+                </ul>
+
+                <button type="button">Add to Favorites</button>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Saved Cities</h2>
+                    <button type="button">Edit</button>
+                </header>
+
+                <ul>
+                    <li>
+                        <span>Addis Ababa</span>
+                        <span>22°C</span>
+                        <button type="button">Remove</button>
+                    </li>
+
+                    <li>
+                        <span>Dire Dawa</span>
+                        <span>28°C</span>
+                        <button type="button">Remove</button>
+                    </li>
+
+                    <li>
+                        <span>Bahir Dar</span>
+                        <span>25°C</span>
+                        <button type="button">Remove</button>
+                    </li>
+
+                    <li>
+                        <span>Mekelle</span>
+                        <span>21°C</span>
+                        <button type="button">Remove</button>
+                    </li>
+
+                    <li>
+                        <span>Hawassa</span>
+                        <span>24°C</span>
+                        <button type="button">Remove</button>
+                    </li>
+                </ul>
+
+                <button type="button">Add City</button>
+            </section>
+
+            <section id="map">
+                <h2>Weather Map Ethiopia</h2>
+
+                <div>
+                    <p>Map will appear here</p>
+                </div>
+
+                <button type="button">Open Map View</button>
+            </section>
+
+            <section>
+                <h2>Air Quality (Addis Ababa)</h2>
+
+                <div>
+                    <strong>32</strong>
+                    <span>Good</span>
+                </div>
+
+                <p>Air quality is satisfactory.</p>
+            </section>
+
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>
+            Bole Weather © 2025 | Live weather for Ethiopian cities
+        </p>
+
+        <nav aria-label="Footer navigation">
+            <a href="#privacy">Privacy</a>
+            <a href="#terms">Terms</a>
+            <a href="#about">About</a>
+        </nav>
+    </footer>
+
+</body>
+</html>
