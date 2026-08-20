@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 5 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethio Telecom Service Registration ,Ethiopian Airlines flight information, and Ethiopian landmarks</title>
+</head>
+<body>
+    <header>
+        <h1>Information Desk</h1>
+    </header>
+    
+    <main>
+        <section>
+            <!-- choose post for method because the things the user filled I don't want it be shown on the URL -->
+            <!-- choose # for action cause I want it to be submitted  -->
+            <!-- 1 -->
+            <h2>Register for a fictional Ethio Telecom service</h2>
+            <form action="#" method="post">
+                <fieldset>
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                    <label for="tel">Telphone Number</label>
+                    <input type="tel" name="tel" id="tel"  placeholder="+251911234567" pattern="\+251[0-9]{9}">
+                    <label for="branch"> Branch Preference </label>
+                    <select name="branch" id="branch" required>
+                        <!-- the first option's value is empty because the first one is choosen automatically and we don't want a value to be submitted -->
+                        <option value="">Select a branch</option>
+                        <option value="bole">Bole</option>
+                        <option value="kazanchis">Kazanchis</option>
+                        <option value="piassa">Piassa</option>
+                    </select>
+                    <button type="submit">Register</button>
+                </fieldset>
+            </form>
+        </section>
+        <section>
+            <!-- 2 -->
+            <h2>Ethiopian Airlines</h2>
+            <table>
+                <caption>Ethiopian Airlines Flights Schedules</caption>
+                <thead>
+                    <th scope="col">Flight</th>
+                    <th scope="col">From</th>
+                    <th scope="col">To</th>
+                    <th scope="col">Departs</th>
+                    <th scope="col">Price ETB</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>ET302</th>
+                        <td>Addis Ababa</td>
+                         <td>Nairobi</td>
+                        <td>08:00</td>
+                        <td>18,500</td>
+                    </tr>
+                    <tr>
+                        <th>ET908</th>
+                        <td>Addis Ababa</td>
+                        <td>Dubai</td>
+                        <td>10:30</td>
+                        <td>32,000</td>
+                    </tr>
+                    <tr>
+                        <th>ET901</th>
+                        <td>Addis Ababa</td>
+                        <td>London</td>
+                        <td>13:15</td>
+                        <td>58,000</td>
+                    </tr>
+                    <tr>
+                        <th>ET920</th>
+                        <td>Addis Ababa</td>
+                        <td>Cairo</td>
+                        <td>16:00</td>
+                        <td>24,500</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <!-- 3 -->
+            <h2>Ethiopian Landmark</h2>
+            <figure>
+                <img src="https://share.google/srHwKwKEoK5HVltVY" alt="Ethiopian Airlines passenger plane on an airport runway with ground service vehicles nearby">
+                <figcaption>Ethiopian Airlines passenger plane on an airport</figcaption>
+            </figure>
+            <iframe
+                title="Map showing Addis Ababa, Ethiopia"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=38.70%2C8.90%2C38.85%2C9.10&layer=mapnik"
+                width="600"
+                height="400"
+                loading="lazy"
+            ></iframe>  
+        </section>
+        <section>
+            <!-- 4 -->
+            <!-- <div>Open Menu</div> -->
+            <!-- div shouldn't be used for button -->
+            <button type="button">Open Menu</button>
+            <!-- <input type="text"> -->
+            <!-- have a label and for which will match with the id of the input  -->
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name">
+            <!-- <img src="img.png" alt=""> -->
+            <!-- added alt for the img -->
+            <img src="img.png" alt="Ethiopian Airlines passenger plane on an airport runway with ground service vehicles nearby">
+        </section>
+    </main>  
+</body>
+</html>
