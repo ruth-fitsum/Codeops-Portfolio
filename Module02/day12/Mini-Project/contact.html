@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habesha Eatery</title>
-</head>
-<body>
-    <header><h1>Contact Habesha Eatery</h1></header>
-    <nav><a href="index.html">Reservations</a> · <a href="contact.html">Contact</a></nav>
-    <main>
-        <form action="/contact" method="post">
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" required>
-        <!-- TODO: email + message, both labelled and validated -->
-        </form>
-    </main>
-    <footer>Bole, Addis Ababa</footer>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Contact — Habesha Eatery, Bole</title>
+        <meta name="description" content="Get in touch with Habesha Eatery in Bole, Addis Ababa.">
+    </head>
+    <body>
+        <header>
+            <h1>Contact Habesha Eatery</h1>
+        </header>
+        <nav>
+            <a href="index.html">Reservations</a> · <a href="contact.html">Contact</a>
+        </nav>
+        <main>
+            <form action="/contact" method="post">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required>
+            <!-- email that was required -->
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+            <!-- message that was required -->
+            <label for="message">Message</label>
+            <!-- a new input of element - textarea -->
+            <textarea name="message" id="message" rows="6"></textarea>
+            </form>
+        </main>
+        <footer>Bole, Addis Ababa</footer>
+    </body>
 </html>

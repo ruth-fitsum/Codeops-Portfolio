@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservations — Habesha Eatery, Bole</title>
+    <meta name="description" content="Reserve a table at Habesha Eatery in Bole, Addis Ababa">
+</head>
+<body>
+    <header>
+        <h1>Reserve Habesha Eatery</h1>
+        <nav><a href="index.html">Reservations</a>-<a href="contact.html">Contact</a></nav>
+    </header>
+    <main>
+        <section>
+            <form action="/index" method="post">
+                <fieldset>
+                    <label for="name">Full name</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required pattern ="^[a-z0-9._%+]+@[a-z0-9]+\.[a-z]{2,}$">
+                    <label for="tel">Phone Number</label>
+                    <input type="tel" name="tel" id="tel">
+                </fieldset>
+                <fieldset>
+                    <label for="guests"> Number of guests</label>
+                    <input type="number" name="guests" id="guests" min="1" max="20" required>
+                    <label for="date">Reservation date</label>
+                    <input type="date" name="date" id="date" required>
+                    <label for="time">Reservation time</label>
+                    <input type="time" name="time" id="time"required>
+                </fieldset>
+            </form>
+        </section>
+        <section>
+            <table>
+                <caption>Habesha Eatery Menu and Prices in ETB</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Dish</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    <tr> 
+                        <th scope="row">Doro Wot</th>
+                        <td>Spicy chicken stew served with injera.</td> 
+                        <td>450 ETB</td> 
+                    </tr> 
+                    <tr> 
+                        <th scope="row">Tibs</th>
+                        <td>Sautéed beef with onions, peppers, and spices.</td>
+                        <td>500 ETB</td>
+                    </tr> 
+                    <tr> 
+                        <th scope="row">Shiro Wot</th>
+                        <td>Seasoned chickpea stew served with injera.</td>
+                        <td>300 ETB</td> 
+                    </tr> 
+                    <tr> 
+                        <th scope="row">Vegetarian Firfir</th>
+                        <td>Injera pieces mixed with vegetables and spices.</td>
+                        <td>280 ETB</td> 
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+           <h2>One of our dishes</h2>
+           <img src="images.jpg" alt="Beyanetu dish special order in our restaurant"> 
+        </section>
+    </main>
+</body>
+</html>
