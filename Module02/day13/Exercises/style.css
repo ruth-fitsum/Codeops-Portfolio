@@ -1,0 +1,16 @@
+/* 1 */
+:root{
+    --primary-color:#949b64;
+    --secondary-color:#6f659a;
+    --button-spacing:12px;
+    --font-stack: Arial,Helvetica,sans-serif;  
+}
+
+button{
+    background-color: var(--primary-color);   
+    color: var(--secondary-color);
+    padding: var(--button-spacing);
+    font-family: var(--font-stack);
+    border-radius:0.5rem;
+    border:none; 
+}
