@@ -31,3 +31,103 @@ button{
 .border-box{
     box-sizing: border-box;
 }
+
+/* 3 */
+
+p{
+    color:blue;
+}
+
+.text{
+    color: green;
+}
+
+#special{
+    color:red;
+}
+
+/* 4 */
+/* inorder for the border to work we won't have them inside the css */
+
+table{
+    width: 100px;
+    /* border to be together */
+    border-collapse: collapse;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+th,td{
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* to style them different color */
+th{
+    background-color: #222;
+    color: white;
+}
+
+tr:nth-child(even){
+    background: color #f2f2f2;
+}
+
+/* 5 */
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.palette {
+  display: flex;
+  gap: 20px;
+}
+
+.color-card {
+  flex: 1;
+  padding: 25px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.color-card h3 {
+  margin-top: 0;
+}
+
+.color-card p {
+  margin: 8px 0;
+}
+
+.blue {
+  background-color: hsl(224, 64%, 33%);
+  color: white;
+}
+
+.blue:hover {
+  background-color: hsl(224, 64%, 45%);
+}
+
+.orange {
+  background-color: hsl(38, 92%, 50%);
+  color: white;
+}
+
+.orange:hover {
+  background-color: hsl(38, 92%, 65%);
+}
+
+.gray {
+  background-color: hsl(220, 14%, 96%);
+  color: #222;
+}
+
+.gray:hover {
+  background-color: hsl(220, 14%, 99%);
+}
