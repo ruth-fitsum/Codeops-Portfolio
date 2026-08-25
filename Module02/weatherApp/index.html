@@ -1,449 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta
-        name="description"
-        content="Bole Weather - Live weather information for Ethiopian cities"
-    >
-    <title>Bole Weather - Ethiopian Cities</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bole Weather - Live weather information for Ethiopian cities">
+<title>Bole Weather - Ethiopian Cities</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-    <header>
-        <div>
-            <h1>Bole Weather</h1>
-            <p>Ethiopian Cities</p>
-        </div>
-
-        <form>
-            <label for="city-search">Search city</label>
-            <input
-                type="search"
-                id="city-search"
-                name="city"
-                placeholder="Search city..."
-            >
-            <button type="submit">Search</button>
-        </form>
-
-        <div>
-            <button type="button">Theme</button>
-            <button type="button">Menu</button>
-        </div>
-    </header>
-
-    <div>
-
-        <aside>
-            <nav aria-label="Main navigation">
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#favorites">Favorites</a></li>
-                    <li><a href="#map">Map View</a></li>
-                    <li><a href="#alerts">Alerts</a></li>
-                    <li><a href="#weekly-report">Weekly Report</a></li>
-                    <li><a href="#cities">Major Cities</a></li>
-                    <li><a href="#settings">Settings</a></li>
-                </ul>
-            </nav>
-
-            <section>
-                <p>Auto Location</p>
-                <strong>Addis Ababa</strong>
-                <button type="button">Location Settings</button>
-            </section>
-        </aside>
-
-        <main id="home">
-
-            <section>
-                <header>
-                    <div>
-                        <h2>Addis Ababa</h2>
-                        <p>Ethiopia</p>
-                        <time datetime="2025-08-19T10:30">
-                            Tuesday, 19 Aug 2025 · 10:30 AM
-                        </time>
-                    </div>
-
-                    <span>Live</span>
-                </header>
-
-                <div>
-                    <div>
-                        <div>
-                            <strong>22°C</strong>
-                            <p>Partly Cloudy</p>
-                            <p>Feels like 23°C</p>
-                        </div>
-
-                        <dl>
-                            <div>
-                                <dt>Humidity</dt>
-                                <dd>55%</dd>
-                            </div>
-
-                            <div>
-                                <dt>Wind</dt>
-                                <dd>12 km/h NE</dd>
-                            </div>
-
-                            <div>
-                                <dt>Pressure</dt>
-                                <dd>1016 hPa</dd>
-                            </div>
-
-                            <div>
-                                <dt>Visibility</dt>
-                                <dd>10 km</dd>
-                            </div>
-                        </dl>
-                    </div>
-                </div>
-
-                <div>
-                    <article>
-                        <h3>Min / Max</h3>
-                        <p>18°C / 26°C</p>
-                    </article>
-
-                    <article>
-                        <h3>Chance of Rain</h3>
-                        <p>20%</p>
-                    </article>
-
-                    <article>
-                        <h3>Sunrise</h3>
-                        <p>6:10 AM</p>
-                    </article>
-
-                    <article>
-                        <h3>Sunset</h3>
-                        <p>6:35 PM</p>
-                    </article>
-                </div>
-            </section>
-
-            <section id="alerts">
-                <header>
-                    <h2>Alerts</h2>
-                    <a href="#alerts">View all</a>
-                </header>
-
-                <p>
-                    Heavy rainfall expected in Oromia and SNNPR regions
-                    from Aug 20–22.
-                </p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Hourly Forecast</h2>
-
-                    <div>
-                        <button type="button" aria-label="Previous hours">
-                            Previous
-                        </button>
-                        <button type="button" aria-label="Next hours">
-                            Next
-                        </button>
-                    </div>
-                </header>
-
-                <div>
-                    <article>
-                        <time>10 AM</time>
-                        <strong>22°C</strong>
-                        <small>0% rain</small>
-                    </article>
-
-                    <article>
-                        <time>11 AM</time>
-                        <strong>23°C</strong>
-                        <small>0% rain</small>
-                    </article>
-
-                    <article>
-                        <time>12 PM</time>
-                        <strong>24°C</strong>
-                        <small>10% rain</small>
-                    </article>
-
-                    <article>
-                        <time>1 PM</time>
-                        <strong>25°C</strong>
-                        <small>10% rain</small>
-                    </article>
-
-                    <article>
-                        <time>2 PM</time>
-                        <strong>25°C</strong>
-                        <small>10% rain</small>
-                    </article>
-
-                    <article>
-                        <time>3 PM</time>
-                        <strong>24°C</strong>
-                        <small>10% rain</small>
-                    </article>
-
-                    <article>
-                        <time>4 PM</time>
-                        <strong>23°C</strong>
-                        <small>0% rain</small>
-                    </article>
-
-                    <article>
-                        <time>5 PM</time>
-                        <strong>22°C</strong>
-                        <small>0% rain</small>
-                    </article>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>7-Day Forecast</h2>
-                </header>
-
-                <div>
-                    <article>
-                        <time datetime="2025-08-19">Tue 19 Aug</time>
-                        <p>Partly Cloudy</p>
-                        <strong>18°C / 26°C</strong>
-                    </article>
-
-                    <article>
-                        <time datetime="2025-08-20">Wed 20 Aug</time>
-                        <p>Cloudy</p>
-                        <strong>17°C / 25°C</strong>
-                    </article>
-
-                    <article>
-                        <time datetime="2025-08-21">Thu 21 Aug</time>
-                        <p>Light Rain</p>
-                        <strong>16°C / 23°C</strong>
-                    </article>
-
-                    <article>
-                        <time datetime="2025-08-22">Fri 22 Aug</time>
-                        <p>Thunderstorms</p>
-                        <strong>16°C / 22°C</strong>
-                    </article>
-
-                    <article>
-                        <time datetime="2025-08-23">Sat 23 Aug</time>
-                        <p>Partly Cloudy</p>
-                        <strong>17°C / 24°C</strong>
-                    </article>
-
-                    <article>
-                        <time datetime="2025-08-24">Sun 24 Aug</time>
-                        <p>Partly Cloudy</p>
-                        <strong>17°C / 24°C</strong>
-                    </article>
-
-                    <article>
-                        <time datetime="2025-08-25">Mon 25 Aug</time>
-                        <p>Sunny</p>
-                        <strong>18°C / 26°C</strong>
-                    </article>
-                </div>
-            </section>
-
-            <section id="cities">
-                <header>
-                    <h2>Major Cities</h2>
-                    <a href="#cities">View all cities</a>
-                </header>
-
-                <div>
-                    <article>
-                        <h3>Addis Ababa</h3>
-                        <strong>22°C</strong>
-                    </article>
-
-                    <article>
-                        <h3>Dire Dawa</h3>
-                        <strong>28°C</strong>
-                    </article>
-
-                    <article>
-                        <h3>Bahir Dar</h3>
-                        <strong>25°C</strong>
-                    </article>
-
-                    <article>
-                        <h3>Mekelle</h3>
-                        <strong>21°C</strong>
-                    </article>
-
-                    <article>
-                        <h3>Hawassa</h3>
-                        <strong>24°C</strong>
-                    </article>
-
-                    <article>
-                        <h3>Gondar</h3>
-                        <strong>23°C</strong>
-                    </article>
-                </div>
-            </section>
-
-            <section id="weekly-report">
-                <header>
-                    <h2>Weekly Report</h2>
-                    <a href="#weekly-report">View full weekly report</a>
-                </header>
-
-                <div>
-                    <article>
-                        <h3>Average Temperature</h3>
-                        <p>20–24°C</p>
-                    </article>
-
-                    <article>
-                        <h3>Total Rainfall</h3>
-                        <p>35 mm</p>
-                    </article>
-
-                    <article>
-                        <h3>Rainy Days</h3>
-                        <p>3 Days</p>
-                    </article>
-
-                    <article>
-                        <h3>Sunshine Hours</h3>
-                        <p>42 Hours</p>
-                    </article>
-                </div>
-            </section>
-
-        </main>
-
-        <aside>
-
-            <section id="favorites">
-                <header>
-                    <h2>Favorites</h2>
-                    <button type="button">Edit</button>
-                </header>
-
-                <ul>
-                    <li>
-                        <div>
-                            <strong>Addis Ababa</strong>
-                            <span>22°C</span>
-                        </div>
-                        <button type="button">
-                            Remove
-                        </button>
-                    </li>
-
-                    <li>
-                        <div>
-                            <strong>Bahir Dar</strong>
-                            <span>25°C</span>
-                        </div>
-                        <button type="button">
-                            Remove
-                        </button>
-                    </li>
-
-                    <li>
-                        <div>
-                            <strong>Mekelle</strong>
-                            <span>21°C</span>
-                        </div>
-                        <button type="button">
-                            Remove
-                        </button>
-                    </li>
-                </ul>
-
-                <button type="button">Add to Favorites</button>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Saved Cities</h2>
-                    <button type="button">Edit</button>
-                </header>
-
-                <ul>
-                    <li>
-                        <span>Addis Ababa</span>
-                        <span>22°C</span>
-                        <button type="button">Remove</button>
-                    </li>
-
-                    <li>
-                        <span>Dire Dawa</span>
-                        <span>28°C</span>
-                        <button type="button">Remove</button>
-                    </li>
-
-                    <li>
-                        <span>Bahir Dar</span>
-                        <span>25°C</span>
-                        <button type="button">Remove</button>
-                    </li>
-
-                    <li>
-                        <span>Mekelle</span>
-                        <span>21°C</span>
-                        <button type="button">Remove</button>
-                    </li>
-
-                    <li>
-                        <span>Hawassa</span>
-                        <span>24°C</span>
-                        <button type="button">Remove</button>
-                    </li>
-                </ul>
-
-                <button type="button">Add City</button>
-            </section>
-
-            <section id="map">
-                <h2>Weather Map Ethiopia</h2>
-
-                <div>
-                    <p>Map will appear here</p>
-                </div>
-
-                <button type="button">Open Map View</button>
-            </section>
-
-            <section>
-                <h2>Air Quality (Addis Ababa)</h2>
-
-                <div>
-                    <strong>32</strong>
-                    <span>Good</span>
-                </div>
-
-                <p>Air quality is satisfactory.</p>
-            </section>
-
-        </aside>
-
-    </div>
-
-    <footer>
-        <p>
-            Bole Weather © 2025 | Live weather for Ethiopian cities
-        </p>
-
-        <nav aria-label="Footer navigation">
-            <a href="#privacy">Privacy</a>
-            <a href="#terms">Terms</a>
-            <a href="#about">About</a>
-        </nav>
-    </footer>
-
+<div class="app">
+<header class="topbar">
+<div class="brand">
+<h1>Bole Weather</h1>
+<p>Ethiopian Cities</p>
+</div>
+<form class="search-form" id="search-form">
+<label for="city-search" class="sr-only">Search city</label>
+<input type="search" id="city-search" name="city" placeholder="Search city..." autocomplete="off">
+<button type="submit">Search</button>
+<p class="search-status" aria-live="polite"></p>
+</form>
+<div class="header-actions">
+<button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle theme">
+<span id="theme-icon" aria-hidden="true">☀</span>
+</button>
+<button type="button" class="icon-btn" aria-label="Open menu">
+<span class="bar" aria-hidden="true"></span>
+<span class="bar" aria-hidden="true"></span>
+<span class="bar" aria-hidden="true"></span>
+</button>
+</div>
+</header>
+<div class="layout">
+<aside class="sidebar sidebar-left">
+<nav aria-label="Main navigation" class="nav">
+<ul class="nav-list">
+<li><a href="#home" class="is-active">Home</a></li>
+<li><a href="#favorites">Favorites</a></li>
+<li><a href="#map">Map View</a></li>
+<li><a href="#alerts">Alerts</a></li>
+<li><a href="#weekly-report">Weekly Report</a></li>
+<li><a href="#cities">Major Cities</a></li>
+<li><a href="#settings">Settings</a></li>
+</ul>
+</nav>
+<section class="location-card">
+<p class="eyebrow">Current Location</p>
+<strong id="current-location">Addis Ababa</strong>
+<button type="button" class="ghost-btn full" id="location-settings">Location Settings</button>
+</section>
+</aside>
+<main id="home" class="content">
+<section class="hero" id="hero">
+<header class="hero-head">
+<div>
+<h2 id="hero-city">Addis Ababa</h2>
+<p class="hero-country" id="hero-region">Ethiopia</p>
+<time datetime="" class="hero-time" id="hero-time"></time>
+</div>
+<span class="live-badge"><span class="dot"></span>Live</span>
+</header>
+<div class="hero-body">
+<div class="hero-primary">
+<div class="hero-temp">
+<div id="hero-icon" class="weather-symbol" aria-hidden="true">☀</div>
+<div>
+<strong id="hero-temp">--°</strong>
+<p id="hero-condition">Loading...</p>
+<p class="muted" id="hero-feels">Feels like --°</p>
+</div>
+</div>
+<table class="hero-stats">
+<caption class="sr-only">Current Weather Conditions</caption>
+<tbody>
+<tr><th scope="row">Humidity</th><td id="hero-humidity">--</td></tr>
+<tr><th scope="row">Wind</th><td id="hero-wind">--</td></tr>
+<tr><th scope="row">Pressure</th><td id="hero-pressure">--</td></tr>
+<tr><th scope="row">Visibility</th><td id="hero-visibility">--</td></tr>
+</tbody>
+</table>
+</div>
+<div class="hero-grid">
+<article><h3>Min / Max</h3><p id="hero-minmax">--</p></article>
+<article><h3>Chance of Rain</h3><p id="hero-rain">--</p></article>
+<article><h3>Sunrise</h3><p id="hero-sunrise">--</p></article>
+<article><h3>Sunset</h3><p id="hero-sunset">--</p></article>
+</div>
+</div>
+</section>
+<section id="alerts" class="alert-banner">
+<header>
+<span class="alert-icon" aria-hidden="true">⚠</span>
+<h2>Alerts</h2>
+<a href="#alerts">View all</a>
+</header>
+<p id="alert-message">No weather alerts available.</p>
+</section>
+<section class="hourly">
+<header>
+<h2>Hourly Forecast</h2>
+<div class="strip-nav">
+<button type="button" class="ghost-btn small" id="previous-hours">Previous</button>
+<button type="button" class="ghost-btn small" id="next-hours">Next</button>
+</div>
+</header>
+<div class="hourly-strip" id="hourly-strip"></div>
+</section>
+<section class="forecast-week">
+<header><h2>7-Day Forecast</h2></header>
+<div class="week-list" id="week-list"></div>
+</section>
+<section id="cities" class="cities">
+<header>
+<h2>Major Cities</h2>
+<a href="#cities">View all cities</a>
+</header>
+<div class="cities-grid" id="cities-grid"></div>
+</section>
+<section id="weekly-report" class="weekly">
+<header>
+<h2>Weekly Report</h2>
+<a href="#weekly-report">View full weekly report</a>
+</header>
+<div class="weekly-grid">
+<article><h3>Average Temperature</h3><p id="wk-avg-temp">--</p></article>
+<article><h3>Total Rainfall</h3><p id="wk-rainfall">--</p></article>
+<article><h3>Rainy Days</h3><p id="wk-rainy-days">--</p></article>
+<article><h3>Sunshine Hours</h3><p id="wk-sunshine">--</p></article>
+</div>
+</section>
+</main>
+<aside class="sidebar sidebar-right">
+<section id="favorites" class="fav">
+<header>
+<h2>Favorites</h2>
+<button type="button" class="text-btn" id="clear-favorites">Clear</button>
+</header>
+<ul class="fav-list" id="fav-list"></ul>
+<button type="button" class="ghost-btn full" id="add-favorite">+ Add to Favorites</button>
+</section>
+<section class="saved">
+<header>
+<h2>Saved Cities</h2>
+<button type="button" class="text-btn" id="clear-saved">Clear</button>
+</header>
+<ul class="saved-list" id="saved-list"></ul>
+<button type="button" class="ghost-btn full" id="add-saved">+ Add City</button>
+</section>
+<section id="map" class="map-card">
+<h2>Weather Map Ethiopia</h2>
+<div class="map-placeholder"><p>Map will appear here</p></div>
+<button type="button" class="ghost-btn full">Open Map View</button>
+</section>
+<section class="aqi-card">
+<h2 id="aqi-title">Air Quality</h2>
+<div class="aqi-value">
+<strong id="aqi-value">--</strong>
+<span class="aqi-tag" id="aqi-tag">Unavailable</span>
+</div>
+<p class="muted" id="aqi-desc">Air quality data is not available.</p>
+</section>
+</aside>
+</div>
+<footer class="site-footer">
+<p>Bole Weather © 2026 | Live weather for Ethiopian cities</p>
+<nav aria-label="Footer navigation">
+<a href="#privacy">Privacy</a>
+<a href="#terms">Terms</a>
+<a href="#about">About</a>
+</nav>
+</footer>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
