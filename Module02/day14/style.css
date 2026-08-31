@@ -1,0 +1,156 @@
+/* the first thing to do */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 1 */
+header nav{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    background: #222;
+    color:white;
+}
+
+a{
+    text-decoration: none;
+    color:white;
+}
+
+.logo{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-links button{
+    border: none;
+    padding: 10px;
+    border-radius: 5%;
+}
+
+/* 2 */
+h1{
+    margin: 20px;
+}
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap:20px ;
+}
+
+.card{
+    flex: 1;
+    min-width: 200px;
+    padding: 24px;
+    background: blue;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.card h2{
+    margin-bottom: 10px;
+}
+
+/* 3 */
+
+.grid-gallery{
+    display: grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap: 20px;
+}
+
+.gallery img{
+    height: 500px;
+    width:100%;
+}
+
+/* 4 */
+
+.page-layout{
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-areas: 
+    "header header"
+    "sidebar main"
+    "footer footer";    
+}
+
+header{
+    grid-area: header;
+}
+
+.sidebar{
+    grid-area: sidebar;
+}
+
+main{
+    grid-area: main;
+    padding-right:100px;
+}
+
+footer{
+    grid-area: footer;
+    /* wanted to make the paragraph at the center */
+    padding:20px;
+    display:grid;
+    justify-content: center;
+    align-items: center;
+}
+
+/* for screen width under 700px */
+
+@media (max-width:700px){
+    .page-layout{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "header"
+        "sidebar"
+        "main"
+        "footer";
+    }
+}
+
+/* 5 */
+
+.sale{
+    position:relative;
+}
+
+.sale-badge{
+    position: absolute;
+    top:10px;
+    right:10px;
+    width:50px;
+}
+
+.sale img{
+    width:100%;
+    height:200px;
+    /* for the image not to stretch  */
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.sale-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4757;  
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    text-align: center;
+    /* for it to be on top */
+    z-index: 10;          
+}
