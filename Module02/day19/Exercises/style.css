@@ -1,0 +1,19 @@
+.highlight {
+    color: crimson;
+    background-color: lightyellow;
+}
+
+.box {
+    border: 2px solid black;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+li {
+    margin: 8px 0;
+}
+
+button {
+    margin-left: 10px;
+    cursor: pointer;
+}

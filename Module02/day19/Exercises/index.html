@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Day 19 - DOM Practice</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1 id="title">Original Title</h1>
+
+    <!-- Requirement 1 -->
+    <section>
+        <h2>1. Change Heading</h2>
+        <p>The JavaScript will change the h1 text and toggle a CSS class.</p>
+    </section>
+
+    <!-- Requirement 2 -->
+    <section>
+        <h2>2. Ethiopian Cities</h2>
+
+        <ul id="city-list">
+            <!-- Cities will be added by JavaScript -->
+        </ul>
+    </section>
+
+    <!-- Requirement 3 -->
+    <section>
+        <h2>3. Event Bubbling</h2>
+
+        <div id="event-box" class="box">
+            <p>Click the button and check the console.</p>
+
+            <button id="click-btn">
+                Click Me
+            </button>
+        </div>
+    </section>
+
+    <!-- Requirement 4 -->
+    <section>
+        <h2>4. Delete Items</h2>
+
+        <ul id="item-list">
+
+            <li data-id="1">
+                Coffee
+                <button class="delete-btn">Delete</button>
+            </li>
+
+            <li data-id="2">
+                Milk
+                <button class="delete-btn">Delete</button>
+            </li>
+
+            <li data-id="3">
+                Bread
+                <button class="delete-btn">Delete</button>
+            </li>
+
+        </ul>
+    </section>
+
+    <!-- Requirement 5 -->
+    <section>
+        <h2>5. Add an Item</h2>
+
+        <form id="add-form">
+
+            <input
+                type="text"
+                id="item-input"
+                placeholder="Enter an item"
+            >
+
+            <button type="submit">
+                Add Item
+            </button>
+
+        </form>
+
+        <ul id="added-list">
+            <!-- New items will be added here -->
+        </ul>
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
