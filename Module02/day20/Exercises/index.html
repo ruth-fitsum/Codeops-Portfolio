@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 20: Fetch State UI</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; }
+        #status-container { padding: 20px; border-radius: 6px; border: 1px solid #ccc; max-width: 400px; }
+        .loading { background-color: #f0f0f0; color: #666; }
+        .error { background-color: #ffe3e3; color: #d63031; border-color: #ffb8b8; }
+        .success { background-color: #e3faf2; color: #2ed573; border-color: #b8f2e6; }
+    </style>
+</head>
+<body>
+
+    <h2>Todo Item Status</h2>
+    <div id="status-container" class="loading">Loading...</div>
+
+    <script>
+        const statusBox = document.getElementById('status-container');
+
+        async function loadData() {
+            // Set initial UI state
+            statusBox.className = 'loading';
+            statusBox.innerText = 'Loading data from API...';
+
+            try {
+                // Fetching a real public todo endpoint
+                const response = await fetch('https://typicode.com');
+                
+                if (!response.ok) {
+                    throw new Error(`Server returned error code: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                // Update UI for Success State
+                statusBox.className = 'success';
+                statusBox.innerHTML = `
+                    <strong>✅ Data Loaded Successfully!</strong><br><br>
+                    <strong>Title:</strong> ${data.title}<br>
+                    <strong>Completed:</strong> ${data.completed}
+                `;
+            } catch (error) {
+                // Update UI for Error State (will fire if you toggle Network to "Offline")
+                statusBox.className = 'error';
+                statusBox.innerHTML = `
+                    <strong>❌ Failed to load data</strong><br><br>
+                    ${error.message}. <br><br>
+                    <em>Tip: Ensure you are online, or toggle Network to Offline in DevTools to test this state.</em>
+                `;
+            }
+        }
+
+        // Run on page load
+        loadData();
+    </script>
+</body>
+</html>
