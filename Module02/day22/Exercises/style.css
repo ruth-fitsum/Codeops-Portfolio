@@ -1,0 +1,135 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 24px 16px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #222;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin-bottom: 8px;
+}
+
+.description {
+    color: #555;
+}
+
+.card {
+    margin-top: 24px;
+    padding: 24px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+input,
+select,
+button {
+    width: 100%;
+    padding: 12px;
+    font: inherit;
+    border-radius: 5px;
+}
+
+input,
+select {
+    border: 1px solid #bbb;
+    background-color: #fff;
+}
+
+button {
+    border: none;
+    background-color: #008c72;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #006f5a;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid #006f5a;
+    outline-offset: 2px;
+}
+
+#status {
+    padding: 10px;
+    background-color: #e8f3f0;
+    border-radius: 5px;
+}
+
+#result {
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+#watchlist {
+    padding-left: 20px;
+}
+
+#watchlist li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+#watchlist li span {
+    overflow-wrap: anywhere;
+}
+
+#watchlist button {
+    width: auto;
+    flex-shrink: 0;
+    padding: 8px 12px;
+    background-color: #b83232;
+}
+
+#watchlist button:hover {
+    background-color: #922525;
+}
+
+footer {
+    margin-top: 24px;
+    color: #666;
+    font-size: 13px;
+    text-align: center;
+}
+
+@media (max-width: 400px) {
+    .card {
+        padding: 16px;
+    }
+
+    #watchlist li {
+        align-items: flex-start;
+    }
+}

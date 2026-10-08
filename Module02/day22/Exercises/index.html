@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETB Currency Converter</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>ETB Currency Converter</h1>
+        <p class="description">Convert Ethiopian birr into other currencies.</p>
+
+        <p id="status" role="status" aria-live="polite">Ready</p>
+
+        <section class="card">
+            <h2>Convert Currency</h2>
+
+            <form id="convert-form">
+                <label for="amount">Amount in ETB</label>
+                <input
+                    id="amount"
+                    type="number"
+                    min="0"
+                    step="any"
+                    placeholder="Enter amount"
+                    required
+                >
+
+                <label for="currency">Convert to</label>
+                <select id="currency" required></select>
+
+                <button type="submit">Convert</button>
+            </form>
+
+            <p id="result" aria-live="polite"></p>
+        </section>
+
+        <section class="card">
+            <h2>Currency Watchlist</h2>
+            <p>Save currencies you want to check regularly.</p>
+
+            <button id="add-watchlist" type="button">
+                Add selected currency
+            </button>
+
+            <ul id="watchlist"></ul>
+        </section>
+
+        <footer>
+            <p>Exchange rates are provided by ExchangeRate-API.</p>
+        </footer>
+    </main>
+</body>
+</html>
