@@ -1,0 +1,86 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 24px;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+.container {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin-bottom: 5px;
+}
+
+section {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    margin: 12px 0 6px;
+}
+
+input,
+select,
+button {
+    font: inherit;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+input,
+select {
+    width: 100%;
+    border: 1px solid #ccc;
+    margin-bottom: 12px;
+}
+
+button {
+    background: #176b4d;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #10543c;
+}
+
+#status {
+    min-height: 24px;
+}
+
+#result {
+    font-weight: bold;
+}
+
+#watchlist li {
+    margin: 12px 0;
+}
+
+#watchlist .rm {
+    margin-left: 10px;
+    background: #a83232;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    section {
+        padding: 15px;
+    }
+}
