@@ -1,231 +1,251 @@
 
+const API = "https://open.er-api.com/v6/latest/ETB";
+const KEY = "birrwatch";
+
+// ==================================================
+// QUESTION 1
+// Scaffold index.html and declare the state object.
+// HTML containers are in index.html.
+// ==================================================
+
 const state = {
+    base: "ETB",
     rates: {},
-    watchlist: []
+    watchlist: [],
+    amount: 100,
+    currency: "USD"
 };
 
-const statusElement = document.querySelector("#status");
-const convertForm = document.querySelector("#convert-form");
-const amountInput = document.querySelector("#amount");
-const currencySelect = document.querySelector("#currency");
-const resultElement = document.querySelector("#result");
-const addWatchlistButton = document.querySelector("#add-watchlist");
-const watchlistElement = document.querySelector("#watchlist");
+// Select HTML elements
+const status = document.querySelector("#status");
+const select = document.querySelector("#currency");
+const form = document.querySelector("#convert-form");
+const amount = document.querySelector("#amount");
+const result = document.querySelector("#result");
+const addButton = document.querySelector("#add-currency");
+const watchUl = document.querySelector("#watchlist");
 
-const API_URL = "https://open.er-api.com/v6/latest/ETB";
-const STORAGE_KEY = "currency-watchlist";
 
-// Populate the currency dropdown from state.
-function render() {
-    const previousCurrency = currencySelect.value;
-    currencySelect.replaceChildren();
+// ==================================================
+// QUESTION 2
+// Write render() using fake hard-coded rates.
+// Test this before using the API.
+// ==================================================
 
-    const currencies = Object.keys(state.rates).sort();
+// Uncomment these lines to test Question 2:
+// state.rates = { USD: 0.0177, KES: 2.29 };
+// render();
 
-    for (const currency of currencies) {
-        const option = document.createElement("option");
 
-        option.value = currency;
-        option.textContent = currency;
+// ==================================================
+// QUESTION 3
+// Fetch live rates, check res.ok, store data.rates
+// in state, and handle loading and error messages.
+// ==================================================
 
-        currencySelect.appendChild(option);
-    }
-
-    if (currencies.includes(previousCurrency)) {
-        currencySelect.value = previousCurrency;
-    }
-}
-
-// Fetch live exchange rates.
 async function loadRates() {
-    statusElement.textContent = "Loading exchange rates...";
+    status.textContent = "Loading rates...";
 
     try {
-        const response = await fetch(API_URL);
+        const res = await fetch(API);
 
-        if (!response.ok) {
-            throw new Error("Unable to fetch exchange rates.");
+        if (!res.ok) {
+            throw new Error("HTTP " + res.status);
         }
 
-        const data = await response.json();
+        const data = await res.json();
 
-        if (
-            data.result !== "success" ||
-            !data.rates ||
-            typeof data.rates !== "object"
-        ) {
-            throw new Error("Invalid exchange-rate data.");
+        if (data.result !== "success" || !data.rates) {
+            throw new Error("Invalid API response");
         }
 
         state.rates = data.rates;
+        status.textContent = "";
 
         render();
-        renderWatchlist();
 
-        statusElement.textContent =
-            `Exchange rates loaded. Base currency: ${data.base_code}.`;
-
-    } catch (error) {
-        statusElement.textContent =
-            "Could not load exchange rates. Check your connection and try again.";
-
-        console.error("Rate loading error:", error);
+    } catch (err) {
+        status.textContent = "Could not load rates.";
     }
 }
 
-// Convert ETB into the selected currency.
-convertForm.addEventListener("submit", function (event) {
-    event.preventDefault();
 
-    const amount = Number(amountInput.value);
-    const currency = currencySelect.value;
-    const rate = state.rates[currency];
+// ==================================================
+// QUESTION 2: RENDER FUNCTION
+// Populate the currency dropdown from state.rates.
+// Also used by the live API in Question 3.
+// ==================================================
+
+function render() {
+    const codes = Object.keys(state.rates);
+
+    select.innerHTML = codes
+        .map(c => `<option value="${c}">${c}</option>`)
+        .join("");
+
+    if (codes.includes(state.currency)) {
+        select.value = state.currency;
+    } else if (codes.length > 0) {
+        state.currency = codes.includes("USD") ? "USD" : codes[0];
+        select.value = state.currency;
+    }
+
+    renderWatchlist();
+}
+
+
+// ==================================================
+// QUESTION 4
+// Handle form submission, prevent page reload,
+// validate the amount, calculate conversion,
+// and display the result.
+// ==================================================
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const amt = Number(amount.value);
+    const currency = select.value;
 
     if (
-        amountInput.value.trim() === "" ||
-        !Number.isFinite(amount) ||
-        amount <= 0
+        !amount.value.trim() ||
+        !Number.isFinite(amt) ||
+        amt <= 0
     ) {
-        resultElement.textContent =
-            "Enter a valid amount greater than zero.";
+        result.textContent = "Enter a valid amount.";
         return;
     }
 
-    if (rate === undefined || !Number.isFinite(rate)) {
-        resultElement.textContent =
-            "The exchange rate is unavailable.";
+    const rate = state.rates[currency];
+
+    if (rate === undefined) {
+        result.textContent = "Exchange rate is unavailable.";
         return;
     }
 
-    const convertedAmount = amount * rate;
+    state.amount = amt;
+    state.currency = currency;
 
-    resultElement.textContent =
-        `${amount.toLocaleString()} ETB = ` +
-        `${convertedAmount.toLocaleString(undefined, {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        })} ${currency}`;
+    const converted = (amt * rate).toFixed(2);
+
+    result.textContent =
+        `${amt} ETB = ${converted} ${currency}`;
 });
 
-// Render the saved currencies.
+
+// ==================================================
+// QUESTION 5
+// Add currencies to the watchlist.
+// Prevent duplicates and render the list from state.
+// ==================================================
+
 function renderWatchlist() {
-    watchlistElement.replaceChildren();
+    const currencies = state.watchlist.filter(
+        c => state.rates[c] !== undefined
+    );
 
-    for (const currency of state.watchlist) {
-        const item = document.createElement("li");
-        const label = document.createElement("span");
-        const removeButton = document.createElement("button");
-
-        label.textContent = currency;
-
-        removeButton.type = "button";
-        removeButton.textContent = "Remove";
-        removeButton.dataset.c = currency;
-        removeButton.setAttribute(
-            "aria-label",
-            `Remove ${currency} from watchlist`
-        );
-
-        item.append(label, removeButton);
-        watchlistElement.appendChild(item);
+    if (currencies.length === 0) {
+        watchUl.innerHTML = "<li>No currencies yet</li>";
+        return;
     }
+
+    watchUl.innerHTML = currencies.map(c => `
+        <li data-c="${c}">
+            1 ETB = ${state.rates[c]} ${c}
+            <button type="button" class="rm">Remove</button>
+        </li>
+    `).join("");
 }
 
-// Add the selected currency without duplicates.
-addWatchlistButton.addEventListener("click", function () {
-    const currency = currencySelect.value;
+addButton.addEventListener("click", function () {
+    const currency = select.value;
 
-    if (!currency || !(currency in state.rates)) {
-        statusElement.textContent =
-            "Select a valid currency first.";
+    if (!currency) {
+        status.textContent = "Wait for rates to load.";
         return;
     }
 
     if (state.watchlist.includes(currency)) {
-        statusElement.textContent =
+        status.textContent =
             `${currency} is already in your watchlist.`;
         return;
     }
 
     state.watchlist.push(currency);
 
+    status.textContent = "";
     save();
     renderWatchlist();
-
-    statusElement.textContent =
-        `${currency} added to your watchlist.`;
 });
 
-// One delegated listener handles every Remove button.
-watchlistElement.addEventListener("click", function (event) {
-    const button = event.target.closest("button[data-c]");
-
-    if (!button || !watchlistElement.contains(button)) {
+// Remove a currency using one delegated click listener
+watchUl.addEventListener("click", function (e) {
+    if (!e.target.matches(".rm")) {
         return;
     }
 
-    const currency = button.dataset.c;
+    const currency = e.target.closest("li").dataset.c;
 
     state.watchlist = state.watchlist.filter(
-        item => item !== currency
+        c => c !== currency
     );
 
     save();
     renderWatchlist();
-
-    statusElement.textContent =
-        `${currency} removed from your watchlist.`;
 });
 
-// Save the watchlist to browser storage.
+
+// ==================================================
+// QUESTION 6
+// Save and load the watchlist and last currency
+// with localStorage. Restore them during init().
+// ==================================================
+
 function save() {
-    try {
-        localStorage.setItem(
-            STORAGE_KEY,
-            JSON.stringify(state.watchlist)
-        );
-    } catch (error) {
-        console.error("Could not save watchlist:", error);
-        statusElement.textContent =
-            "Could not save your watchlist in this browser.";
-    }
+    localStorage.setItem(KEY, JSON.stringify({
+        watchlist: state.watchlist,
+        currency: state.currency
+    }));
 }
 
-// Restore the watchlist when the app starts.
 function load() {
     try {
-        const saved = localStorage.getItem(STORAGE_KEY);
+        const saved = localStorage.getItem(KEY);
 
-        if (saved === null) {
-            return;
+        if (!saved) return;
+
+        const data = JSON.parse(saved);
+
+        if (Array.isArray(data.watchlist)) {
+            state.watchlist = [...new Set(
+                data.watchlist.filter(c => typeof c === "string")
+            )];
         }
 
-        const parsed = JSON.parse(saved);
-
-        if (!Array.isArray(parsed)) {
-            return;
+        if (typeof data.currency === "string") {
+            state.currency = data.currency;
         }
 
-        state.watchlist = [
-            ...new Set(
-                parsed.filter(currency =>
-                    typeof currency === "string" &&
-                    /^[A-Z]{3}$/.test(currency)
-                )
-            )
-        ];
-    } catch (error) {
+    } catch (err) {
         state.watchlist = [];
-        console.error("Could not load watchlist:", error);
+        state.currency = "USD";
     }
 }
 
-// Initialize the application.
+// Save the most recently selected currency
+select.addEventListener("change", function () {
+    state.currency = select.value;
+    save();
+});
+
+
+// ==================================================
+// INITIALIZATION
+// Load saved choices first, then fetch live rates.
+// ==================================================
+
 async function init() {
     load();
-    render();
-    renderWatchlist();
-
     await loadRates();
 }
 
