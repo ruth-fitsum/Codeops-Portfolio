@@ -1,0 +1,29 @@
+
+.card {
+  background-color: white;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.dish {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dish h3,
+.dish p {
+  margin: 0;
+}
+
+.spicy-badge {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 8px;
+  background-color: #ffe0e0;
+  color: #a00000;
+  border-radius: 4px;
+  font-size: 12px;
+}
