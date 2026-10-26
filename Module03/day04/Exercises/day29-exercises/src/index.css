@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+}
+
+.container {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+section {
+  margin: 20px 0;
+  padding: 16px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+input,
+select {
+  display: block;
+  margin: 8px 0 14px;
+  padding: 8px;
+}
+
+.error {
+  color: red;
+}
