@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Doro Wat",
+    "category": "Traditional",
+    "price": 450,
+    "description": "Traditional Ethiopian chicken stew served with injera."
+  },
+  {
+    "id": 2,
+    "name": "Shiro",
+    "category": "Traditional",
+    "price": 180,
+    "description": "A flavorful Ethiopian chickpea stew."
+  },
+  {
+    "id": 3,
+    "name": "Chechebsa",
+    "category": "Breakfast",
+    "price": 160,
+    "description": "A traditional Ethiopian breakfast."
+  },
+  {
+    "id": 4,
+    "name": "Pasta",
+    "category": "Lunch",
+    "price": 280,
+    "description": "Pasta served with tomato sauce."
+  },
+  {
+    "id": 5,
+    "name": "Firfir",
+    "category": "Breakfast",
+    "price": 200,
+    "description": "Injera mixed with a spicy sauce."
+  },
+  {
+    "id": 6,
+    "name": "Kitfo",
+    "category": "Traditional",
+    "price": 500,
+    "description": "A traditional Ethiopian minced beef dish."
+  }
+]
