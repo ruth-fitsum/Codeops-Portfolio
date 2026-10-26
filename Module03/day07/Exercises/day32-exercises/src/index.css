@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+}
+
+.container {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.panel {
+  padding: 18px;
+  margin: 20px 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+button {
+  padding: 8px 12px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.light {
+  background: white;
+  color: #222;
+}
+
+.dark {
+  background: #222;
+  color: white;
+}
+
+.note {
+  font-size: 14px;
+  color: #777;
+}
