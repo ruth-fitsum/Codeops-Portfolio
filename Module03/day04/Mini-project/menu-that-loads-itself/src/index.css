@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.category-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button {
+  padding: 9px 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #eee;
+}
+
+.category-bar .selected {
+  background: #16834a;
+  color: white;
+}
+
+input {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  box-sizing: border-box;
+  margin: 8px 0 16px;
+  padding: 10px;
+}
+
+.dish-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.dish-card {
+  padding: 14px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.error {
+  color: red;
+}
