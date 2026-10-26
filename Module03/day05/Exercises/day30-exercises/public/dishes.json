@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Doro Wat",
+    "category": "Main",
+    "price": 280
+  },
+  {
+    "id": 2,
+    "name": "Shiro",
+    "category": "Vegan",
+    "price": 160
+  },
+  {
+    "id": 3,
+    "name": "Tibs",
+    "category": "Grill",
+    "price": 320
+  },
+  {
+    "id": 4,
+    "name": "Misir Wat",
+    "category": "Vegan",
+    "price": 140
+  }
+]
