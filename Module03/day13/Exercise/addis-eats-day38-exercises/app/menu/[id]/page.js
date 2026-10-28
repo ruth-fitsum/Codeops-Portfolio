@@ -1,0 +1,4 @@
+import {notFound} from "next/navigation";import Link from "next/link";import {dishes,getDish} from "@/lib/dishes";import AddToCartButton from "@/components/AddToCartButton";
+export function generateStaticParams(){return dishes.map(dish=>({id:dish.id}));}
+export async function generateMetadata({params}){const {id}=await params;const dish=await getDish(id);return dish?{title:dish.name,description:dish.description}:{title:"Dish not found"};}
+export default async function DishPage({params}){const {id}=await params;const dish=await getDish(id);if(!dish)notFound();return <main className="container"><Link href="/menu">← Back to menu</Link><section className="hero" style={{marginTop:20}}><div className="dish-icon" style={{maxWidth:160}}>{dish.icon}</div><p className="eyebrow">{dish.category}</p><h1>{dish.name}</h1><p className="lead">{dish.description}</p><p className="price">{dish.price} ETB</p><AddToCartButton dish={dish}/></section></main>}

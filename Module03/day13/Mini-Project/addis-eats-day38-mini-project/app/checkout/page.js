@@ -1,0 +1,1 @@
+export default function CheckoutPage(){return <main className="container"><p className="eyebrow">Almost there</p><h1>Checkout</h1><div className="notice">Learning demo only: no order is submitted and no payment is processed.</div></main>}

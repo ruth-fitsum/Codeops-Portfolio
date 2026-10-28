@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function MenuLayout({children}){return <div className="container"><div className="menu-shell"><aside className="sidebar"><h3>Menu guide</h3><Link href="/menu">All dishes</Link><Link href="/menu?category=Vegetarian">Vegetarian</Link><Link href="/menu?category=Specials">Specials</Link><Link href="/menu?category=Stews">Stews</Link><p style={{fontSize:".85rem",color:"#667064"}}>This sidebar is part of the nested server layout.</p></aside><div>{children}</div></div></div>}
