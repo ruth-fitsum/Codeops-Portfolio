@@ -1,0 +1,28 @@
+const orders = [];
+
+export function createOrder(orderData) {
+  const order = {
+    id: `AE-${Date.now()}`,
+    ...orderData,
+    status: "Pending",
+    createdAt: new Date().toISOString(),
+  };
+
+  orders.push(order);
+  return order;
+}
+
+export function getOrderById(id) {
+  return orders.find((order) => order.id === id);
+}
+
+export function cancelOrder(id) {
+  const order = getOrderById(id);
+
+  if (!order || order.status !== "Pending") {
+    return false;
+  }
+
+  order.status = "Cancelled";
+  return true;
+}
